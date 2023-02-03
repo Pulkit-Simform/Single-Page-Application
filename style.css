@@ -1,0 +1,82 @@
+.lineUp {
+    animation: 4s anim-lineUp ease-out 1;
+}
+
+.lineLeft{
+    animation: 4s anim-lineLeft ease-out 1;
+}
+
+.lineRight{
+    animation: 4s anim-lineRight ease-out 1;
+}
+
+.hero-section-background-tilt{
+    animation: 5s anim-sectionBackground ease-out infinite;
+}
+
+@keyframes anim-sectionBackground {
+    0%{
+        background-color: rgb(240 253 250);
+    }
+    50%{
+        background-color: rgb(204 251 241);
+    }
+    100%{
+        background-color: rgb(153 246 228);
+    }
+}
+
+@keyframes anim-lineUp {
+    0% {
+        opacity: 0;
+        transform: translateY(80%);
+    }
+    20% {
+        opacity: 0;
+    }
+    50% {
+        opacity: 1;
+        transform: translateY(0%);
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0%);
+    }
+}
+
+@keyframes anim-lineLeft {
+    0% {
+        opacity: 0;
+        transform: translateX(-80%);
+    }
+    20% {
+        opacity: 0;
+    }
+    50% {
+        opacity: 1;
+        transform: translateX(0%);
+    }
+    100% {
+        opacity: 1;
+        transform: translateX(0%);
+    }
+}
+
+
+@keyframes anim-lineRight {
+    0% {
+        opacity: 0;
+        transform: translateX(80%);
+    }
+    20% {
+        opacity: 0;
+    }
+    50% {
+        opacity: 1;
+        transform: translateX(0%);
+    }
+    100% {
+        opacity: 1;
+        transform: translateX(0%);
+    }
+}

@@ -1,0 +1,84 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link href="style.css" rel="stylesheet"/>
+  <link rel="icon" type="image/png" href="assets/JicJac_Laptop.svg">
+  <title>Search</title>
+</head>
+<body>
+  <!-- Header Part -->
+    <header class="sticky top-0 z-50 text-gray-600 body-font bg-gray-100 hover:bg-gray-200">
+        <div class="container mx-auto flex flex-wrap p-5 flex-col md:flex-row items-center">
+          <a class="flex title-font font-medium items-center text-gray-900 mb-4 md:mb-0">
+            <img src="assets/JicJac_Laptop.svg" style="width: 30px;"/>
+            <!-- <img src="data:image/png;base64,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" class="header-image"> -->
+            <span class="ml-3 text-xl">
+                <a href="../index.html">
+                    CodingContest
+                </a>
+            </span>
+          </a>
+          <nav class="md:mr-auto md:ml-4 md:py-1 md:pl-4 md:border-l md:border-gray-400	flex flex-wrap items-center text-base justify-center">
+            <a class="mr-5 hover:text-gray-900" href="contest.html">All Contests</a>
+            <a class="mr-5 hover:text-gray-900" href="search.html">Search</a>
+            <a class="mr-5 hover:text-gray-900" href="blog.html">Blog</a>
+            <!-- <a class="mr-5 hover:text-gray-900">Fourth Link</a> -->
+          </nav>
+          <div>
+
+            <!-- <button class="inline-flex items-center bg-green-500 border-0 py-2 px-4 focus:outline-none hover:bg-green-700 rounded text-base mt-4 md:mt-0 text-white">Button
+              <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="w-4 h-4 ml-1" viewBox="0 0 24 24">
+                <path d="M5 12h14M12 5l7 7-7 7"></path>
+              </svg>
+            </button>             -->
+          </div>
+        </div>
+      </header>
+      <!-- Header End -->
+
+
+      <!-- Footer Part -->
+      <footer class="text-gray-600 body-font bg-gray-100 hover:bg-gray-200">
+        <div class="container px-5 py-8 mx-auto flex items-center sm:flex-row flex-col">
+          <a class="flex title-font font-medium items-center md:justify-start justify-center text-gray-900">
+            <img src="assets/JicJac_Laptop.svg" style="width: 30px;"/>
+            <span class="ml-3 text-xl">CodingContest</span>
+          </a>
+          <p class="text-sm text-gray-500 sm:ml-4 sm:pl-4 sm:border-l-2 sm:border-gray-200 sm:py-2 sm:mt-0 mt-4">© 2020 Tailblocks —
+            <a href="https://twitter.com/knyttneve" class="text-gray-600 ml-1" rel="noopener noreferrer" target="_blank">@knyttneve</a>
+          </p>
+          <span class="inline-flex sm:ml-auto sm:mt-0 mt-4 justify-center sm:justify-start">
+            <a class="text-gray-500">
+              <svg fill="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="w-5 h-5" viewBox="0 0 24 24">
+                <path d="M18 2h-3a5 5 0 00-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 011-1h3z"></path>
+              </svg>
+            </a>
+            <a class="ml-3 text-gray-500">
+              <svg fill="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="w-5 h-5" viewBox="0 0 24 24">
+                <path d="M23 3a10.9 10.9 0 01-3.14 1.53 4.48 4.48 0 00-7.86 3v1A10.66 10.66 0 013 4s-4 9 5 13a11.64 11.64 0 01-7 2c9 5 20 0 20-11.5a4.5 4.5 0 00-.08-.83A7.72 7.72 0 0023 3z"></path>
+              </svg>
+            </a>
+            <a class="ml-3 text-gray-500">
+              <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="w-5 h-5" viewBox="0 0 24 24">
+                <rect width="20" height="20" x="2" y="2" rx="5" ry="5"></rect>
+                <path d="M16 11.37A4 4 0 1112.63 8 4 4 0 0116 11.37zm1.5-4.87h.01"></path>
+              </svg>
+            </a>
+            <a class="ml-3 text-gray-500">
+              <svg fill="currentColor" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="0" class="w-5 h-5" viewBox="0 0 24 24">
+                <path stroke="none" d="M16 8a6 6 0 016 6v7h-4v-7a2 2 0 00-2-2 2 2 0 00-2 2v7h-4v-7a6 6 0 016-6zM2 9h4v12H2z"></path>
+                <circle cx="4" cy="4" r="2" stroke="none"></circle>
+              </svg>
+            </a>
+          </span>
+        </div>
+      </footer>
+      <!-- Footer Part End -->
+
+      <!-- Script -->
+      <script src="script.js"></script>
+</body>
+</html>
