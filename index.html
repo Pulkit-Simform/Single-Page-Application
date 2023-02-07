@@ -1,274 +1,370 @@
 <!doctype html>
 <html>
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <script src="https://cdn.tailwindcss.com"></script>
-  <link href="style.css" rel="stylesheet"/>
+  <link href="style.css" rel="stylesheet" />
   <link rel="icon" type="image/png" href="assets/JicJac_Laptop.svg">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" />
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/tw-elements/dist/css/index.min.css" />
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: {
+            sans: ['Inter', 'sans-serif'],
+          },
+        }
+      }
+    }
+  </script>
+  <script src="https://cdn.jsdelivr.net/npm/tw-elements/dist/js/index.min.js"></script>
+
   <title>Coding-contest</title>
 </head>
+
 <body>
   <!-- Header Part -->
-      <header class="sticky top-0 z-50 text-gray-600 body-font bg-gray-100 hover:bg-gray-200">
-        <div class="container mx-auto flex flex-wrap p-5 flex-col md:flex-row items-center">
-          <a class="flex title-font font-medium items-center text-gray-900 mb-4 md:mb-0">
-            <img src="assets/JicJac_Laptop.svg" style="width: 30px;"/>
-            <!-- <img src="data:image/png;base64,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" class="header-image"> -->
-            <span class="ml-3 text-xl">
-              <a href="index.html">
-
-                CodingContest
-              </a>
-            </span>
+  <header class="sticky top-0 z-50 text-gray-600 body-font bg-gray-100 hover:bg-gray-200">
+    <div class="container mx-auto flex flex-wrap p-5 flex-col md:flex-row items-center">
+      <a class="flex title-font font-medium items-center text-gray-900 mb-4 md:mb-0">
+        <img src="assets/JicJac_Laptop.svg" style="width: 30px;" />
+        <!-- <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAIAAAACACAMAAAD04JH5AAABFFBMVEX///8AAABNt+XzUkT+yaNIrdnqSjt6Qyrg4N7+t4T29vYLGR9Ms+EzMzPm5uRQv+/Y2Nb+wJP/zqctLS3Hx8X98vEUFBP/0qobGxv/vYj/V0j0TT7zxJ/nTkE3EhDsXVIkJCQvIRg8Kx85LSQZCAYvJR4rDQu9vbxsOyU1HRJdMyCNjY3vsH8RKjRiYmJ0dHRCQkKAZVKMb1olWG6ysrE5h6kfS14YOEbkuJVcHxpFJhhVVVQhEgtIOS5EossHERbCj2crZ4HnroW5k3drVkZJGRXQQjXVqoqhgWlcSjwiGxZLNSTRoHybm5o+lLkzeZipf2COZkrWmm9tTzmILialOC14KCK2OzBTQkF0REKmSkTTVk0BiE43AAAK1klEQVR4nO2be1viyBKHjQMqGAEDJ3gBVrk6iHIRFBQUlpviiooguzvf/3ucru7OrdO5kMEzz3OeqT+EdGJ+b6qqqzudsLHx237bei1YKAvIyoVfpF+ICtT2fgnCuaCz81+sLwgv/yvd2PmJIJycRwpY9vZse/vsFn8tRGDPwXnsS+VDFf1VZ5E82FlW33q383X6EdngdqqPCAzNcuSr9ENG/dtt1W6NCRH6IoA7OPn34vZ28bvBAdQF3yEh8J7Lr9GPwbmLRLGI9LZ19l11CHbG1wQByp6qena2bTBtG3xQ/hIAxu1WhpwjVL5APoIrj7P+9jZ0hPO190Va+FwCrL843wmrAqy3KyiFv+gGoCis3QchXHiLjIysNtyyaMU2/Mf68gAc0Gaus20oCkKWs3ttLgjemb2PB6A26ZVZTnastTMGK9rIZwx0u6i421QhoO0rAdoCY2yInACCq5guBGftdvFsu5hl9SFJz86KbRoVhxBEypW9VUzWrhCUs0S+VlO06Tfc3nZOwuC5id6NQbzVPo7sSZLGtcxkkqmNJd+T1l5Uu6HVmHjpSZ+1quTz+eJSwifF0Repaj7CakjENxPCw+5K9qA7caeTy9SacQBQTYo3q+lc51l3mFUpjsDOm6m4ovXUE8vNam6S6VTHcZ3+uNrJTE6rf2XUw86DFgCQABdieHNF0wAmysywpuon1HQ8VQ97sQJAk3dhuqp++IaXBgPl+ge8vVYhgH1wTvAr75Orf8VToInoi3P1LZMQdiEHhAWUWnBylI0XoLxLP3l2D/+UnpXS5MyVeiRSx7coqAP6pCZt26nT2xa51MXZyB8NVQDqCfTxgIRF9LlrARDugX7pkAJUIqGdnVAE1GpSIpGAHhjdUduQHZJD+YXIA4AIGdA9DFCAOtJCanX4nptMJmwbAggcdgWrUqwCPKgAJBTWAP4LlN6lgAKAtZDpwn0QIU303u0wEAjANzsAfGWb/E8HgB0bAGElANdmGQI5k8llZE8hWMVwL0wfKkm4hxNuBxKu6kskfFCFoiG1DSfhoWMSrmS4G552lW64B91wz9gNo9AWVbth2rEbOl20cauHT6zNQmSSbDVSiGr6Nu1Ai+mAKwB/716/KfrVUpzRjfxKKfbpSuFgonyzK8WOAA1BuG7o9P1+pRh3murIX9UGZHUwqu7n6DfLObkbADz29PT6/s1p7wI7uhkf1zrIE2hGoA3H8Sa0dWp/7v+JA1GxuTm1BAg3/MpXnHSw1QhTfWQiCcTYJxHzGQxt74P9hQ65sxS3BbgSeko75Nx1GD574qZfNfEatfdV5QS1JjLYxgBvgtPyBB8gfA9XR8Mu7uLvYZQJws29qAEA2EDxvDTJIEODAThd0d+HDLFftOQCYC1lB964QF2BTARfNR9M0WYuoQBoqS9MVADYsl8h4gKQHL+hSYBTEB1zTzrflV91woUuBnoAOUEBoALLtvocgLAiJOpSENcBkYJNRV0McgpALkOs0+k8NSnAs2MEzADhKbmKBm3FZe8a6/vFV7zroUE9gNkUFyhJmND6AKTggcMypQlAxP375l5thNBPN0n/E6l3aB6QWDWZLuhT+gAuAk6rAo4AkIK7VN8vTg0A/nvoIJmEmQA7AKpg1Go6bhMCku20D4ZpChL91wdDCGhMnswEoI/vShwfnlgnIam9flIFSdqRJLyY6moBbsqwUQD/Y33nZRmnbggpeBMm8b9guyHYNW58NN4bkvxzqsLWAFohwlVwikN+bypEJBEJQa6fUBgkqdQlo7CbNWIugFqKSRXUxftmKvpZo0NzbtAfN9FQMO5/nJIWV8tifAAchivUfo2TQVW6MqkrBZEYmpVqE6EDN/p2w7GoVEFV6dV8+RAbDcBgJ0490B4AQ4B3r7lXzQCcvqf12un3yVoANhsoBA3uZTMA6VJg9vbxnE6nn58/3maBwOl6AMLilB92DkDgEN2rIIPPQGlNAOjina4fHXCBpwX7+wFqh/u+BCrDJ2707QGcxTf9943eg25eohiMA+WXQsTxkZ0dgK2+KIr309frC1KeWICEMh2Xo5VLxLFjGQ4bAGt9tGfauLrRd7++cZmuz3RJuXJXPi+EOBjWABb6yOuN3vUu2+kZF/Arg3Bnnh5ZAvD1xWmP1W7NF7AS29FuDaREB3aMlvPPlmkZu+4SgKsvTq/158oOPxejb9++HS1gqzMmo5EkjbH+4ujoCO1MYo6U9l/loBsAvv6rukSbTbUWo+Q3LIEIPnHjoI8Go8SY3Jt+kl2w9/h4KzlCHEPyVOHODGCyTd7yrLo8OpwvR4o2tZaSCkr2t3Q7t7AdHx+PFsQHLMBKNlwy2uQq58aj5iZ9ApEcwt6XnwBYmsWJjVraQa3REVcfDB8W8QqQH1npA8J8mMrnU8P5yNDMACQhH8teAez0URyOksiYADH6W8dLdB45ZAAIhlwYHLiw1ecaq48IIA3qBgBlrdPG8JJfdmV5jv7W8cIQAwBw1t8JwZOd+TocsLU1EvRDNTywqLtwATwrXK5FfysJF60CwCMbvLhub5E9FIHkWvS3jg0AeD0Z1jrtLRYVhNSqAHx9BoC+jHDi8LAUVl1XBbDQZwHcP7j8KgD2Tbx1AVjpmwE2ds7vojzDT6nlkwNkJ0YAqHir6MPxNgCWT+/hyJdYAexED3DUTqWy9kXBeNHDfH6YtAPgG+4hkRgYAwA7bAEYr+fhv1cHgOS4jHkBYMPuDSB4giPgAcCUd94AIAInMQ8A5sT3BgDjz2VkdQCzPgaw7QXcCFS0CGAAIUstv7AB4MhjgPw8r/y/G4BgEL8xuVfQAxiND8DVBwDG7NXrFVSGDnAVUsxcGJdJDgJP/Ti5ML/mY6t/Z1bDlqNGN1NzFoF79aO5clt0Ss0JwEo/08Qr4r5EX3015NMwS+Vd/ehTOfb0rUQXMBwAyANfmTEAUB+OxMfqo8HUEmbD+DbQIAy2lVyqwf+YwcoNWUBxAIDkv4ywM6KoDgBuQJuPSiTa+WEL3SEvlsvRaIQGHfR3uVh8tlrDvBL69HtJUXcGCO7B29jsHI0BwPfg/Y4pSvlUypTw8nNXL+8KQHABgO/DLd5XMdjzW3c2g7UzYm5DYCQI8QB8+BFpzkFfs/THx/vbW7c7cwDASSgfMCZwAcANiWZz3H98rA0GT52MaxwbAMsywAWgFOTpLX5sOu73EQ2CyeRkizPZAzA/W3ADYMKJx+MIB8FQmozpZHYAGxsvXCdoD6d4j8lsXBMH89FIVQdPzgAcr0DfUIrS5JF9WL4CDeLxAoA7p2YD7rNCl7YOAEHueydYC4DuYaEUXzEgngHSJVLLSh8MymO/6Yu7h/gJAKWYd9kJxqQzeBw3fe5c4RngtKQOJzPGCYTiqdpvml8nMZnkCQCK00w3onV5lQIHpNZvxu3SQhp7AcBz9Hf9oK5aqftm8kfHJi0keMto9d/d4F+zzQzjeoA8p5q9faRZAAhIhp8W5F0zD79IhHnxqY4AhvbS2/vzxKhrTE9IC/ymkSovNV29VWDlAuF9FlAc//7BDnatxTKZXC5aTDNNCzBpTN7y8vSTTLuFlGxrvhzheSiejiaX85b5XkQzjz/24BNE//7n3x8//jDbj3//+dtUP39GX/+zVmLy3mU9FvqPjYVi9fIeE6noz/wktlBWz3b5EnP5O8JQ7EVbiSsXPOTfb/u/tf8ChOe8cbGKDHsAAAAASUVORK5CYII=" class="header-image"> -->
+        <span class="ml-3 text-xl">
+          <a href="index.html">
+            CodingContest
           </a>
-          <nav class="md:mr-auto md:ml-4 md:py-1 md:pl-4 md:border-l md:border-gray-400	flex flex-wrap items-center text-base justify-center">
-            <a class="mr-5 hover:text-gray-900" href="#codingSites">CodingSites</a>
-            <a class="mr-5 hover:text-gray-900" href="#contestData">All Contests</a>
-            <a class="mr-5 hover:text-gray-900" href="#contactUs">Contact</a>
-            <!-- <a class="mr-5 hover:text-gray-900">Fourth Link</a> -->
-          </nav>
-          <div>
+        </span>
+      </a>
+      <nav
+        class="md:mr-auto md:ml-4 md:py-1 md:pl-4 md:border-l md:border-gray-400	flex flex-wrap items-center text-base justify-center">
+        <a class="mr-5 hover:text-gray-900" href="#codingSites">CodingSites</a>
+        <a class="mr-5 hover:text-gray-900" href="#contestData">All Contests</a>
+        <a class="mr-5 hover:text-gray-900" href="#contactUs">Contact</a>
 
-            <button class="relative w-36 h-12 hover:bg-blue-700 hover:text-white focus:outline-none border-2 border-blue-700 rounded hover:text-white">
-              <span class="absolute -top-3 -right-2 h-3 w-3">
-                <span class="animate-ping absolute -right-1 -top-0 inline-flex h-5 w-5 rounded-full bg-purple-400 opacity-75"></span>
-                <span class="relative inline-flex rounded-full h-3 w-3 bg-purple-500"></span>
-              </span>
-              
-              <span class="text-blue-700 hover:text-white">About Author</span>
-            </button>
+        <!-- <a class="mr-5 hover:text-gray-900">Fourth Link</a> -->
+      </nav>
+      <div>
 
-            
-          </div>
+        <button
+          class="relative w-36 h-12 hover:bg-blue-700 hover:text-white focus:outline-none border-2 border-blue-700 rounded hover:text-white"
+          data-bs-toggle="modal" data-bs-target="#staticBackdrop">
+          <span class="absolute -top-3 -right-2 h-3 w-3">
+            <span
+              class="animate-ping absolute -right-1 -top-0 inline-flex h-5 w-5 rounded-full bg-purple-400 opacity-75"></span>
+            <span class="relative inline-flex rounded-full h-3 w-3 bg-purple-500"></span>
+          </span>
+          <span class="text-blue-700 hover:text-white">About Author</span>
+        </button>
+
+
+      </div>
+    </div>
+  </header>
+  <!-- Header Part End -->
+
+  <!-- Hero Section -->
+  <section class="text-gray-600 body-font bg-teal-50" style="height:60vh;">
+    <div class="container mx-auto flex px-5 py-24 md:flex-row flex-col items-center">
+      <div class="lg:max-w-lg lg:w-full md:w-1/2 w-5/6 mb-10 md:mb-0">
+        <img class="object-cover object-center rounded lineLeft" alt="hero"
+          src="https://c4.wallpaperflare.com/wallpaper/632/34/549/technology-monitor-alpha-coders-binary-wallpaper-preview.jpg">
+      </div>
+      <div
+        class="lg:flex-grow md:w-1/2 lg:pl-24 md:pl-16 flex flex-col md:items-start md:text-left items-center text-center lineUp">
+        <h1 class="title-font sm:text-4xl text-3xl mb-4 font-medium text-gray-900">Find Best Coding Contest For you
+          <br class="hidden lg:inline-block">That makes you more practical
+        </h1>
+        <p class="mb-8 leading-relaxed">We are serving best source and across all platform to choose you best resources
+          to boost your skill to next level and land your dream opportunity</p>
+        <div class="flex justify-center">
+          <button
+            class="inline-flex text-white bg-indigo-500 border-0 py-2 px-6 focus:outline-none hover:bg-indigo-600 rounded text-lg">Move
+            to see contests</button>
         </div>
-      </header>
-      <!-- Header Part End -->
+      </div>
+    </div>
+  </section>
 
-      <!-- Hero Section -->
-      <section class="text-gray-600 body-font bg-teal-50" style="height:60vh;">
-        <div class="container mx-auto flex px-5 py-24 md:flex-row flex-col items-center">
-          <div class="lg:max-w-lg lg:w-full md:w-1/2 w-5/6 mb-10 md:mb-0">
-            <img class="object-cover object-center rounded lineLeft" alt="hero" src="https://c4.wallpaperflare.com/wallpaper/632/34/549/technology-monitor-alpha-coders-binary-wallpaper-preview.jpg">
-          </div>
-          <div class="lg:flex-grow md:w-1/2 lg:pl-24 md:pl-16 flex flex-col md:items-start md:text-left items-center text-center lineUp">
-            <h1 class="title-font sm:text-4xl text-3xl mb-4 font-medium text-gray-900">Find Best Coding Contest For you
-              <br class="hidden lg:inline-block">That makes you more practical
-            </h1>
-            <p class="mb-8 leading-relaxed">We are serving best source and across all platform to choose you best resources to boost your skill to next level and land your dream opportunity</p>
-            <div class="flex justify-center">
-              <button class="inline-flex text-white bg-indigo-500 border-0 py-2 px-6 focus:outline-none hover:bg-indigo-600 rounded text-lg">Move to see contests</button>              
-            </div>
-          </div>
+  <!-- Hero Section End -->
+
+
+  <!-- Modal -->
+  <div class="modal fade fixed top-0 left-0 hidden w-full h-full outline-none overflow-x-hidden overflow-y-auto"
+    id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
+    aria-labelledby="staticBackdropLabel" aria-hidden="true">
+    <div class="modal-dialog relative w-auto pointer-events-none">
+      <div
+        class="modal-content border-none shadow-lg relative flex flex-col w-full pointer-events-auto bg-white bg-clip-padding rounded-md outline-none text-current">
+        <div
+          class="modal-header flex flex-shrink-0 items-center justify-between p-4 border-b border-gray-200 rounded-t-md">
+          <h5 class="text-xl font-medium leading-normal text-gray-800" id="exampleModalLabel">
+            About Author
+          </h5>
+          <button type="button"
+            class="btn-close box-content w-4 h-4 p-1 text-black border-none rounded-none opacity-50 focus:shadow-none focus:outline-none focus:opacity-100 hover:text-black hover:opacity-75 hover:no-underline"
+            data-bs-dismiss="modal" aria-label="Close"></button>
         </div>
-      </section>
-
-      <!-- Hero Section End -->
-
-      <!-- Coding Contest Preview -->
-
-      <section class="text-gray-600 body-font" id="codingSites">
-        <div class="container px-5 py-24 mx-auto">
-          <div class="text-center mb-20 lineUp">
-            <h1 class="sm:text-3xl text-2xl font-medium title-font text-gray-900 mb-4">Preview of Best Coding Contest Sites</h1>
-            <p class="text-base leading-relaxed xl:w-2/4 lg:w-3/4 mx-auto text-gray-500s">These are some best coding sites that helps you to boost your activities</p>
-            <div class="flex mt-6 justify-center">
-              <div class="w-16 h-1 rounded-full bg-indigo-500 inline-flex"></div>
-            </div>
-          </div>
-          <div class="flex flex-nowrap sm:-m-4  -mb-10 -mt-4 md:space-y-0 space-y-6">
-            <div class="p-2 m-1 md:w-1/3 flex flex-col text-center items-center border border-slate-300 bg-slate-100 rounded-lg hover:bg-slate-200 hover:scale-95 transform transition duration-500 lineLeft">
-              <div class="w-20 h-20 inline-flex items-center justify-center rounded-full bg-indigo-100 text-indigo-500 mb-5 flex-shrink-0">
-                <img src="https://codeforces.org/s/91348/images/codeforces-sponsored-by-ton.png">
-              </div>
-              <div class="flex-grow">
-                <h2 class="text-gray-900 text-lg title-font font-medium mb-3">CodeForces</h2>
-                <p class="leading-relaxed text-base">Blue bottle crucifix vinyl post-ironic four dollar toast vegan taxidermy. Gastropub indxgo juice poutine, ramps microdosing banh mi pug VHS try-hard.</p>
-                <a class="mt-3 text-indigo-500 inline-flex items-center">Learn More
-                  <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="w-4 h-4 ml-2" viewBox="0 0 24 24">
-                    <path d="M5 12h14M12 5l7 7-7 7"></path>
-                  </svg>
-                </a>
-              </div>
-            </div>
-            <div class="p-2 m-1 md:w-1/3 flex flex-col text-center items-center border border-slate-300 bg-slate-100 rounded-lg hover:bg-slate-200 hover:scale-95 transform transition duration-500 lineUp">
-              <div class="w-20 h-20 inline-flex items-center justify-center rounded-full bg-indigo-100 text-indigo-500 mb-5 flex-shrink-0">
-                <img src="https://cdn.codechef.com/images/cc-logo.svg" />
-              </div>
-              <div class="flex-grow">
-                <h2 class="text-gray-900 text-lg title-font font-medium mb-3">CodeChef</h2>
-                <p class="leading-relaxed text-base">Blue bottle crucifix vinyl post-ironic four dollar toast vegan taxidermy. Gastropub indxgo juice poutine, ramps microdosing banh mi pug VHS try-hard.</p>
-                <a class="mt-3 text-indigo-500 inline-flex items-center">Learn More
-                  <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="w-4 h-4 ml-2" viewBox="0 0 24 24">
-                    <path d="M5 12h14M12 5l7 7-7 7"></path>
-                  </svg>
-                </a>
-              </div>
-            </div>
-            <div class="p-2 m-1  md:w-1/3 flex flex-col text-center items-center border border-slate-300 bg-slate-100 rounded-lg hover:bg-slate-200 hover:scale-95 transform transition duration-500 lineRight">
-              <div class="w-20 h-20 inline-flex items-center justify-center rounded-full bg-indigo-100 text-indigo-500 mb-5 flex-shrink-0">
-                <img src="https://www.hackerrank.com/wp-content/uploads/2018/08/hackerrank_logo.png" />
-              </div>
-              <div class="flex-grow">
-                <h2 class="text-gray-900 text-lg title-font font-medium mb-3">HackerRank</h2>
-                <p class="leading-relaxed text-base">Blue bottle crucifix vinyl post-ironic four dollar toast vegan taxidermy. Gastropub indxgo juice poutine, ramps microdosing banh mi pug VHS try-hard.</p>
-                <a class="mt-3 text-indigo-500 inline-flex items-center">Learn More
-                  <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="w-4 h-4 ml-2" viewBox="0 0 24 24">
-                    <path d="M5 12h14M12 5l7 7-7 7"></path>
-                  </svg>
-                </a>
-              </div>
-            </div>
-          </div>
-          <button class="flex mx-auto mt-16 text-white bg-indigo-500 border-0 py-2 px-8 focus:outline-none hover:bg-indigo-600 rounded text-lg lineUp">Go to View Contest</button>
+        <div class="modal-body relative p-4">
+          Hello My Name is Pulkit Sharma
         </div>
-      </section>
-
-      <!-- Coding Contest Preview End -->
-
-      <!-- Live Data For Upcoming contest -->
-
-      <section class="text-gray-600 body-font bg-teal-50">
-        <div class="container px-5 py-24 mx-auto">
-          <div class="flex flex-wrap -m-4" id="contestData">          
-          </div>
+        <div
+          class="modal-footer flex flex-shrink-0 flex-wrap items-center justify-end p-4 border-t border-gray-200 rounded-b-md">
+          <button type="button"
+            class="inline-block px-6 py-2.5 bg-red-600 text-white font-medium text-xs leading-tight uppercase rounded shadow-md hover:bg-red-700 hover:shadow-lg focus:bg-red-700 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-red-800 active:shadow-lg transition duration-150 ease-in-out"
+            data-bs-dismiss="modal">Close</button>
         </div>
-      </section>
-      <!--  Live Data section ends here-->
+      </div>
+    </div>
+  </div>
 
+  <!-- Coding Contest Preview -->
 
-      <!-- Contact us  -->
+  <section class="text-gray-600 body-font" id="codingSites">
+    <div class="container px-5 py-24 mx-auto">
+      <div class="text-center mb-20 lineUp">
+        <h1 class="sm:text-3xl text-2xl font-medium title-font text-gray-900 mb-4">Preview of Best Coding Contest Sites
+        </h1>
+        <p class="text-base leading-relaxed xl:w-2/4 lg:w-3/4 mx-auto text-gray-500s">These are some best coding sites
+          that helps you to boost your activities</p>
+        <div class="flex mt-6 justify-center">
+          <div class="w-16 h-1 rounded-full bg-indigo-500 inline-flex"></div>
+        </div>
+      </div>
+      <!-- For content slides -->
+      <div class="lineUp flex mx-auto">
 
-      <section class="text-gray-600 body-font relative" id="contactUs">
-        <div class="container px-5 py-24 mx-auto">
-          <div class="flex flex-col text-center w-full mb-12">
-            <h1 class="sm:text-3xl text-2xl font-medium title-font mb-4 text-gray-900">Contact Us</h1>
-            <p class="lg:w-2/3 mx-auto leading-relaxed text-base">Whatever cardigan tote bag tumblr hexagon brooklyn asymmetrical gentrify.</p>
+        <div class="slider mx-auto">
+          <!-- <div id="imageContentAdded">
+
+          </div> -->
+
+          <div class="slide">
+            <img src="assets/AtCoder.png" alt="" />
           </div>
-  
-            <div class="lg:w-1/2 md:w-2/3 mx-auto" id="contactFormHide">
-              <div class="flex flex-wrap -m-2">
-                <div class="p-2 w-1/2">
-                  <div class="relative">
-                    <label for="name" class="leading-7 text-sm text-gray-600">Name</label>
-                    <input type="text" id="name" name="name" class="w-full bg-gray-100 bg-opacity-50 rounded border border-gray-300 focus:border-indigo-500 focus:bg-white focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out">
-                  </div>
-                </div>
-                <div class="p-2 w-1/2">
-                  <div class="relative">
-                    <label for="email" class="leading-7 text-sm text-gray-600">Email</label>
-                    <input type="email" id="email" name="email" class="w-full bg-gray-100 bg-opacity-50 rounded border border-gray-300 focus:border-indigo-500 focus:bg-white focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out">
-                  </div>
-                </div>
-                <div class="p-2 w-full">
-                  <div class="relative">
-                    <label for="message" class="leading-7 text-sm text-gray-600">Message</label>
-                    <textarea id="message" name="message" class="w-full bg-gray-100 bg-opacity-50 rounded border border-gray-300 focus:border-indigo-500 focus:bg-white focus:ring-2 focus:ring-indigo-200 h-32 text-base outline-none text-gray-700 py-1 px-3 resize-none leading-6 transition-colors duration-200 ease-in-out"></textarea>
-                  </div>
-                </div>
-                <div class="p-2 w-full">
-                  <!-- <button id="modalButton" data-modal-target="defaultModal" data-modal-toggle="defaultModal" class="block text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800" type="button">
+
+
+          <div class="slide">
+            <img src="assets/CodeChef.png" alt="" />
+          </div>
+
+
+          <div class="slide">
+            <img src="assets/CodeForces.png" alt="" />
+          </div>
+
+
+          <div class="slide">
+            <img src="assets/HackerEarth.png" alt="" />
+          </div>
+
+
+          <div class="slide">
+            <img src="assets/HackerRank.png" alt="" />
+          </div>
+
+
+          <div class="slide">
+            <img src="assets/LeetCode.png" alt="" />
+          </div>
+
+
+
+          <div class="slide">
+            <img src="assets/Kick Start.png" alt="" />
+          </div> 
+          <!-- Control buttons -->
+          <button class="btn btn-next"> 	&#62; </button>
+          <button class="btn btn-prev"> 	&#60; </button>
+        </div>
+
+      </div>
+
+      <button
+        class="flex mx-auto mt-16 text-white bg-indigo-500 border-0 py-2 px-8 focus:outline-none hover:bg-indigo-600 rounded text-lg lineUp">Go
+        to View Contest</button>
+    </div>
+  </section>
+
+  <!-- Coding Contest Preview End -->
+
+  <!-- Live Data For Upcoming contest -->
+
+  <section class="text-gray-600 body-font bg-teal-50">
+    <div class="container px-5 py-24 mx-auto">
+      <div class="flex flex-wrap -m-4" id="contestData">
+      </div>
+    </div>
+  </section>
+  <!--  Live Data section ends here-->
+
+
+  <!-- Contact us  -->
+
+  <section class="text-gray-600 body-font relative" id="contactUs">
+    <div class="container px-5 py-24 mx-auto">
+      <div class="flex flex-col text-center w-full mb-12">
+        <h1 class="sm:text-3xl text-2xl font-medium title-font mb-4 text-gray-900">Contact Us</h1>
+        <p class="lg:w-2/3 mx-auto leading-relaxed text-base">Whatever cardigan tote bag tumblr hexagon brooklyn
+          asymmetrical gentrify.</p>
+      </div>
+
+      <div class="lg:w-1/2 md:w-2/3 mx-auto" id="contactFormHide">
+        <div class="flex flex-wrap -m-2">
+          <div class="p-2 w-1/2">
+            <div class="relative">
+              <label for="name" class="leading-7 text-sm text-gray-600">Name</label>
+              <input type="text" id="name" name="name"
+                class="w-full bg-gray-100 bg-opacity-50 rounded border border-gray-300 focus:border-indigo-500 focus:bg-white focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out">
+            </div>
+          </div>
+          <div class="p-2 w-1/2">
+            <div class="relative">
+              <label for="email" class="leading-7 text-sm text-gray-600">Email</label>
+              <input type="email" id="email" name="email"
+                class="w-full bg-gray-100 bg-opacity-50 rounded border border-gray-300 focus:border-indigo-500 focus:bg-white focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out">
+            </div>
+          </div>
+          <div class="p-2 w-full">
+            <div class="relative">
+              <label for="message" class="leading-7 text-sm text-gray-600">Message</label>
+              <textarea id="message" name="message"
+                class="w-full bg-gray-100 bg-opacity-50 rounded border border-gray-300 focus:border-indigo-500 focus:bg-white focus:ring-2 focus:ring-indigo-200 h-32 text-base outline-none text-gray-700 py-1 px-3 resize-none leading-6 transition-colors duration-200 ease-in-out"></textarea>
+            </div>
+          </div>
+          <div class="p-2 w-full">
+            <!-- <button id="modalButton" data-modal-target="defaultModal" data-modal-toggle="defaultModal" class="block text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800" type="button">
                     Toggle modal
                   </button> -->
-                  <button class="flex mx-auto text-white bg-indigo-500 border-0 py-2 px-8 focus:outline-none hover:bg-indigo-600 rounded text-lg" id="contactForm">Submit</button>
-                </div>
-                <div class="p-2 w-full pt-8 mt-8 border-t border-gray-200 text-center">
-                  <a class="text-indigo-500">example@email.com</a>
-                  <p class="leading-normal my-5">49 Smith St.
-                    <br>Saint Cloud, MN 56301
-                  </p>
-                  <span class="inline-flex">
-                    <a class="text-gray-500">
-                      <svg fill="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="w-5 h-5" viewBox="0 0 24 24">
-                        <path d="M18 2h-3a5 5 0 00-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 011-1h3z"></path>
-                      </svg>
-                    </a>
-                    <a class="ml-4 text-gray-500">
-                      <svg fill="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="w-5 h-5" viewBox="0 0 24 24">
-                        <path d="M23 3a10.9 10.9 0 01-3.14 1.53 4.48 4.48 0 00-7.86 3v1A10.66 10.66 0 013 4s-4 9 5 13a11.64 11.64 0 01-7 2c9 5 20 0 20-11.5a4.5 4.5 0 00-.08-.83A7.72 7.72 0 0023 3z"></path>
-                      </svg>
-                    </a>
-                    <a class="ml-4 text-gray-500">
-                      <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="w-5 h-5" viewBox="0 0 24 24">
-                        <rect width="20" height="20" x="2" y="2" rx="5" ry="5"></rect>
-                        <path d="M16 11.37A4 4 0 1112.63 8 4 4 0 0116 11.37zm1.5-4.87h.01"></path>
-                      </svg>
-                    </a>
-                    <a class="ml-4 text-gray-500">
-                      <svg fill="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="w-5 h-5" viewBox="0 0 24 24">
-                        <path d="M21 11.5a8.38 8.38 0 01-.9 3.8 8.5 8.5 0 01-7.6 4.7 8.38 8.38 0 01-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 01-.9-3.8 8.5 8.5 0 014.7-7.6 8.38 8.38 0 013.8-.9h.5a8.48 8.48 0 018 8v.5z"></path>
-                      </svg>
-                    </a>
-                  </span>
-                </div>
-              </div>
-            </div>
-
+            <button
+              class="flex mx-auto text-white bg-indigo-500 border-0 py-2 px-8 focus:outline-none hover:bg-indigo-600 rounded text-lg"
+              id="contactForm">Submit</button>
+          </div>
+          <div class="p-2 w-full pt-8 mt-8 border-t border-gray-200 text-center">
+            <a class="text-indigo-500">example@email.com</a>
+            <p class="leading-normal my-5">49 Smith St.
+              <br>Saint Cloud, MN 56301
+            </p>
+            <span class="inline-flex">
+              <a class="text-gray-500">
+                <svg fill="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="w-5 h-5"
+                  viewBox="0 0 24 24">
+                  <path d="M18 2h-3a5 5 0 00-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 011-1h3z"></path>
+                </svg>
+              </a>
+              <a class="ml-4 text-gray-500">
+                <svg fill="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="w-5 h-5"
+                  viewBox="0 0 24 24">
+                  <path
+                    d="M23 3a10.9 10.9 0 01-3.14 1.53 4.48 4.48 0 00-7.86 3v1A10.66 10.66 0 013 4s-4 9 5 13a11.64 11.64 0 01-7 2c9 5 20 0 20-11.5a4.5 4.5 0 00-.08-.83A7.72 7.72 0 0023 3z">
+                  </path>
+                </svg>
+              </a>
+              <a class="ml-4 text-gray-500">
+                <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                  class="w-5 h-5" viewBox="0 0 24 24">
+                  <rect width="20" height="20" x="2" y="2" rx="5" ry="5"></rect>
+                  <path d="M16 11.37A4 4 0 1112.63 8 4 4 0 0116 11.37zm1.5-4.87h.01"></path>
+                </svg>
+              </a>
+              <a class="ml-4 text-gray-500">
+                <svg fill="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="w-5 h-5"
+                  viewBox="0 0 24 24">
+                  <path
+                    d="M21 11.5a8.38 8.38 0 01-.9 3.8 8.5 8.5 0 01-7.6 4.7 8.38 8.38 0 01-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 01-.9-3.8 8.5 8.5 0 014.7-7.6 8.38 8.38 0 013.8-.9h.5a8.48 8.48 0 018 8v.5z">
+                  </path>
+                </svg>
+              </a>
+            </span>
+          </div>
         </div>
-      </section>
+      </div>
+
+    </div>
+  </section>
 
 
-             <!-- After Contact -->
-      <section class="text-gray-600 body-font hidden bg-green-100" id="contactFormShow">
-        <div class="container px-5 py-24 mx-auto">
-            <div class="xl:w-1/2 lg:w-3/4 w-full mx-auto text-center">
-            <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" class="inline-block w-8 h-8 text-gray-400 mb-8" viewBox="0 0 975.036 975.036">
-                <path d="M925.036 57.197h-304c-27.6 0-50 22.4-50 50v304c0 27.601 22.4 50 50 50h145.5c-1.9 79.601-20.4 143.3-55.4 191.2-27.6 37.8-69.399 69.1-125.3 93.8-25.7 11.3-36.8 41.7-24.8 67.101l36 76c11.6 24.399 40.3 35.1 65.1 24.399 66.2-28.6 122.101-64.8 167.7-108.8 55.601-53.7 93.7-114.3 114.3-181.9 20.601-67.6 30.9-159.8 30.9-276.8v-239c0-27.599-22.401-50-50-50zM106.036 913.497c65.4-28.5 121-64.699 166.9-108.6 56.1-53.7 94.4-114.1 115-181.2 20.6-67.1 30.899-159.6 30.899-277.5v-239c0-27.6-22.399-50-50-50h-304c-27.6 0-50 22.4-50 50v304c0 27.601 22.4 50 50 50h145.5c-1.9 79.601-20.4 143.3-55.4 191.2-27.6 37.8-69.4 69.1-125.3 93.8-25.7 11.3-36.8 41.7-24.8 67.101l35.9 75.8c11.601 24.399 40.501 35.2 65.301 24.399z"></path>
-            </svg>
-            
-            
-            <p class="leading-relaxed text-lg">Thanks for Submitting Form </p>
-            <p class="leading-relaxed text-lg">You can view in localstorage</p>
-            <span class="inline-block h-1 w-10 rounded bg-indigo-500 mt-8 mb-6"></span>
-            <h2 class="text-gray-900 font-medium title-font tracking-wider text-sm" id="userNameShow"></h2>
-            <p class="text-gray-500" id="emailShow"></p>
-            </div>
-        </div>
-      </section>
-            <!-- After Contact Ends -->
-  
+  <!-- After Contact -->
+  <section class="text-gray-600 body-font hidden bg-green-100" id="contactFormShow">
+    <div class="container px-5 py-24 mx-auto">
+      <div class="xl:w-1/2 lg:w-3/4 w-full mx-auto text-center">
+        <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" class="inline-block w-8 h-8 text-gray-400 mb-8"
+          viewBox="0 0 975.036 975.036">
+          <path
+            d="M925.036 57.197h-304c-27.6 0-50 22.4-50 50v304c0 27.601 22.4 50 50 50h145.5c-1.9 79.601-20.4 143.3-55.4 191.2-27.6 37.8-69.399 69.1-125.3 93.8-25.7 11.3-36.8 41.7-24.8 67.101l36 76c11.6 24.399 40.3 35.1 65.1 24.399 66.2-28.6 122.101-64.8 167.7-108.8 55.601-53.7 93.7-114.3 114.3-181.9 20.601-67.6 30.9-159.8 30.9-276.8v-239c0-27.599-22.401-50-50-50zM106.036 913.497c65.4-28.5 121-64.699 166.9-108.6 56.1-53.7 94.4-114.1 115-181.2 20.6-67.1 30.899-159.6 30.899-277.5v-239c0-27.6-22.399-50-50-50h-304c-27.6 0-50 22.4-50 50v304c0 27.601 22.4 50 50 50h145.5c-1.9 79.601-20.4 143.3-55.4 191.2-27.6 37.8-69.4 69.1-125.3 93.8-25.7 11.3-36.8 41.7-24.8 67.101l35.9 75.8c11.601 24.399 40.501 35.2 65.301 24.399z">
+          </path>
+        </svg>
 
-      <!-- Contact Us -->
 
-      <!-- Footer Part -->
-      <footer class="text-gray-600 body-font bg-gray-100 hover:bg-gray-200">
-        <div class="container px-5 py-8 mx-auto flex items-center sm:flex-row flex-col">
-          <a class="flex title-font font-medium items-center md:justify-start justify-center text-gray-900">
-            <img src="assets/JicJac_Laptop.svg" style="width: 30px;"/>
-            <span class="ml-3 text-xl">CodingContest</span>
-          </a>
-          <p class="text-sm text-gray-500 sm:ml-4 sm:pl-4 sm:border-l-2 sm:border-gray-200 sm:py-2 sm:mt-0 mt-4">© 2020 Tailblocks —
-            <a href="https://twitter.com/knyttneve" class="text-gray-600 ml-1" rel="noopener noreferrer" target="_blank">@knyttneve</a>
-          </p>
-          <span class="inline-flex sm:ml-auto sm:mt-0 mt-4 justify-center sm:justify-start">
-            <a class="text-gray-500">
-              <svg fill="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="w-5 h-5" viewBox="0 0 24 24">
-                <path d="M18 2h-3a5 5 0 00-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 011-1h3z"></path>
-              </svg>
-            </a>
-            <a class="ml-3 text-gray-500">
-              <svg fill="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="w-5 h-5" viewBox="0 0 24 24">
-                <path d="M23 3a10.9 10.9 0 01-3.14 1.53 4.48 4.48 0 00-7.86 3v1A10.66 10.66 0 013 4s-4 9 5 13a11.64 11.64 0 01-7 2c9 5 20 0 20-11.5a4.5 4.5 0 00-.08-.83A7.72 7.72 0 0023 3z"></path>
-              </svg>
-            </a>
-            <a class="ml-3 text-gray-500">
-              <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="w-5 h-5" viewBox="0 0 24 24">
-                <rect width="20" height="20" x="2" y="2" rx="5" ry="5"></rect>
-                <path d="M16 11.37A4 4 0 1112.63 8 4 4 0 0116 11.37zm1.5-4.87h.01"></path>
-              </svg>
-            </a>
-            <a class="ml-3 text-gray-500">
-              <svg fill="currentColor" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="0" class="w-5 h-5" viewBox="0 0 24 24">
-                <path stroke="none" d="M16 8a6 6 0 016 6v7h-4v-7a2 2 0 00-2-2 2 2 0 00-2 2v7h-4v-7a6 6 0 016-6zM2 9h4v12H2z"></path>
-                <circle cx="4" cy="4" r="2" stroke="none"></circle>
-              </svg>
-            </a>
-          </span>
-        </div>
-      </footer>
-      <!-- Footer Part End -->
+        <p class="leading-relaxed text-lg">Thanks for Submitting Form </p>
+        <p class="leading-relaxed text-lg">You can view in localstorage</p>
+        <span class="inline-block h-1 w-10 rounded bg-indigo-500 mt-8 mb-6"></span>
+        <h2 class="text-gray-900 font-medium title-font tracking-wider text-sm" id="userNameShow"></h2>
+        <p class="text-gray-500" id="emailShow"></p>
+      </div>
+    </div>
+  </section>
+  <!-- After Contact Ends -->
 
-      <!-- Script -->
-      <script src="script.js"></script>
+
+  <!-- Contact Us -->
+
+  <!-- Footer Part -->
+  <footer class="text-gray-600 body-font bg-gray-100 hover:bg-gray-200">
+    <div class="container px-5 py-8 mx-auto flex items-center sm:flex-row flex-col">
+      <a class="flex title-font font-medium items-center md:justify-start justify-center text-gray-900">
+        <img src="assets/JicJac_Laptop.svg" style="width: 30px;" />
+        <span class="ml-3 text-xl">CodingContest</span>
+      </a>
+      <p class="text-sm text-gray-500 sm:ml-4 sm:pl-4 sm:border-l-2 sm:border-gray-200 sm:py-2 sm:mt-0 mt-4">© 2020
+        Tailblocks —
+        <a href="https://twitter.com/knyttneve" class="text-gray-600 ml-1" rel="noopener noreferrer"
+          target="_blank">@knyttneve</a>
+      </p>
+      <span class="inline-flex sm:ml-auto sm:mt-0 mt-4 justify-center sm:justify-start">
+        <a class="text-gray-500">
+          <svg fill="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="w-5 h-5"
+            viewBox="0 0 24 24">
+            <path d="M18 2h-3a5 5 0 00-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 011-1h3z"></path>
+          </svg>
+        </a>
+        <a class="ml-3 text-gray-500">
+          <svg fill="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="w-5 h-5"
+            viewBox="0 0 24 24">
+            <path
+              d="M23 3a10.9 10.9 0 01-3.14 1.53 4.48 4.48 0 00-7.86 3v1A10.66 10.66 0 013 4s-4 9 5 13a11.64 11.64 0 01-7 2c9 5 20 0 20-11.5a4.5 4.5 0 00-.08-.83A7.72 7.72 0 0023 3z">
+            </path>
+          </svg>
+        </a>
+        <a class="ml-3 text-gray-500">
+          <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+            class="w-5 h-5" viewBox="0 0 24 24">
+            <rect width="20" height="20" x="2" y="2" rx="5" ry="5"></rect>
+            <path d="M16 11.37A4 4 0 1112.63 8 4 4 0 0116 11.37zm1.5-4.87h.01"></path>
+          </svg>
+        </a>
+        <a class="ml-3 text-gray-500">
+          <svg fill="currentColor" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="0"
+            class="w-5 h-5" viewBox="0 0 24 24">
+            <path stroke="none"
+              d="M16 8a6 6 0 016 6v7h-4v-7a2 2 0 00-2-2 2 2 0 00-2 2v7h-4v-7a6 6 0 016-6zM2 9h4v12H2z"></path>
+            <circle cx="4" cy="4" r="2" stroke="none"></circle>
+          </svg>
+        </a>
+      </span>
+    </div>
+  </footer>
+  <!-- Footer Part End -->
+
+  <!-- Script -->
+  <script src="script.js"></script>
+  <script src="./TW-ELEMENTS-PATH/dist/js/index.min.js"></script>
+
+
 </body>
+
 </html>

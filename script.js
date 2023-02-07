@@ -14,15 +14,6 @@ const fetchingDataOnLoad = fetch(API_STR+"/all")
 function putDataInMap(el,count){
     let obj = {}
     obj["count"] = count;
-    // if(el.in_24_hours === "Yes"){
-    //     if(ALL_SITES_CONTEST[el.site].in_24_hours !== null){
-    //         console.log("Yes it has")
-    //     }else{
-    //         obj["in_24_hours"] = 1;
-    //     }
-    // }else{
-    //     (ALL_SITES_CONTEST[el.site]?.in_24_hours === undefined) ? "" :obj["in_24_hours"] = 0;
-    // }
     ALL_SITES_CONTEST.set(el.site,obj);
 
 }
@@ -100,49 +91,34 @@ document.getElementById("contactForm")?.addEventListener("click",() => {
  
 })
 
-const addNavbarToContestData = () => {
-  const n = Math.ceil(ALL_SITES_CONTEST.size/3);
-  const addNavArr = [];
-  const navStr = (i) => {
-    return `
-      <li>
-        <a href="#" class="px-3 py-2 leading-tight text-gray-500 bg-white border border-gray-300 hover:bg-gray-100 hover:text-gray-700 dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white" id="nav-${i}">${i}</a>
-      </li>
-    `
-  }
 
-  for(let i=1;i<=n;i++){
-    addNavArr.push(navStr(i));
-  }
 
-  console.log(...addNavArr)
+const imageContentAdd = () => {
+  
+  const imageContent = document.getElementById("imageContentAdded")
 
-  const htmlStr = [`
-<nav aria-label="Page navigation example">
-<div class="justify-center items-center m-5 ml-5">
-  <ul class="inline-flex items-center -space-x-px">
-    <li>
-      <a href="#" class="block px-3 py-2 ml-0 leading-tight text-gray-500 bg-white border border-gray-300 rounded-l-lg hover:bg-gray-100 hover:text-gray-700 dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white">
-        <span class="sr-only">Previous</span>
-        <svg aria-hidden="true" class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M12.707 5.293a1 1 0 010 1.414L9.414 10l3.293 3.293a1 1 0 01-1.414 1.414l-4-4a1 1 0 010-1.414l4-4a1 1 0 011.414 0z" clip-rule="evenodd"></path></svg>
-      </a>
-    </li>`,
-...addNavArr,
-`
-    <li>
-      <a href="#" class="block px-3 py-2 leading-tight text-gray-500 bg-white border border-gray-300 rounded-r-lg hover:bg-gray-100 hover:text-gray-700 dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white">
-        <span class="sr-only">Next</span>
-        <svg aria-hidden="true" class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z" clip-rule="evenodd"></path></svg>
-      </a>
-    </li>
-  </ul>
-</nav>
-</div>
-  `]
+  const imageStr = (i) => `
+    <img
+      src="assets/${i}.png"
+      alt="${i}"
+    />
+  `
+  const imgMainDiv = document.createElement("div");
+  
 
-  document.getElementById("contestData").insertAdjacentHTML("afterend",htmlStr.join(' '))
+  ALL_SITES.forEach(i => {
+    const img = document.createElement("div");
+    img.classList.add("slide")
+    img.innerHTML = imageStr(i)
+    console.log(img);
+    imgMainDiv.appendChild(img)
+  });
+
+  imageContent?.appendChild(imgMainDiv);
+  // console.log(imageContent)
 
 }
+
 
 // Data fetch and insert will be occured from here
 window.onload = async () => {
@@ -162,10 +138,139 @@ window.onload = async () => {
     });
       // filter(())
 
-    addNavbarToContestData();
+    // addNavbarToContestData();
+
+    // Image Content Add
+    imageContentAdd();
+
   
 };
 
 
 
 
+// -------- --------------- For Slider ----------------------
+
+// Select all slides
+const slides = document.querySelectorAll(".slide");
+
+// loop through slides and set each slides translateX property to index * 100% 
+slides.forEach((slide, indx) => {
+  slide.style.transform = `translateX(${indx * 100}%)`;
+});
+
+
+let curSlide = 0;
+
+// select next slide button
+const nextSlide = document.querySelector(".btn-next");
+
+let maxSlide = slides.length - 1;
+
+// add event listener and next slide functionality
+nextSlide.addEventListener("click", function () {
+  // check if current slide is the last and reset current slide
+  if (curSlide === maxSlide) {
+    curSlide = 0;
+  } else {
+    curSlide++;
+  }
+
+  //   move slide by -100%
+  slides.forEach((slide, indx) => {
+    slide.style.transform = `translateX(${100 * (indx - curSlide)}%)`;
+  });
+});
+
+
+const prevSlide = document.querySelector(".btn-prev");
+
+// add event listener and navigation functionality
+prevSlide.addEventListener("click", function () {
+  // check if current slide is the first and reset current slide to last
+  if (curSlide === 0) {
+    curSlide = maxSlide;
+  } else {
+    curSlide --;
+  }
+
+  //   move slide by 100%
+  slides.forEach((slide, indx) => {
+    slide.style.transform = `translateX(${100 * (indx - curSlide)}%)`;
+  });
+});
+
+
+
+
+// const imageContentAdd = () => {
+  
+//   const imageContent = document.getElementById("imageContentAdded")
+
+//   const imageStr = (i) => `
+//     <img
+//       src="assets/${i}.png"
+//       alt="${i}"
+//     />
+//   `
+//   const imgMainDiv = document.createElement("div");
+  
+
+//   ALL_SITES.forEach(i => {
+//     const img = document.createElement("div");
+//     img.classList.add("slide")
+//     img.innerHTML = imageStr(i)
+//     console.log(img);
+//     imgMainDiv.appendChild(img)
+//   });
+
+//   imageContent?.appendChild(imgMainDiv);
+//   // console.log(imageContent)
+
+// }
+
+
+
+// const addNavbarToContestData = () => {
+//   const n = Math.ceil(ALL_SITES_CONTEST.size/3);
+//   const addNavArr = [];
+//   const navStr = (i) => {
+//     return `
+//       <li>
+//         <a href="#" class="px-3 py-2 leading-tight text-gray-500 bg-white border border-gray-300 hover:bg-gray-100 hover:text-gray-700 dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white" id="nav-${i}">${i}</a>
+//       </li>
+//     `
+//   }
+
+//   for(let i=1;i<=n;i++){
+//     addNavArr.push(navStr(i));
+//   }
+
+  
+
+//   const htmlStr = [`
+// <nav aria-label="Page navigation example">
+// <div class="justify-center items-center m-5 ml-5">
+//   <ul class="inline-flex items-center -space-x-px">
+//     <li>
+//       <a href="#" class="block px-3 py-2 ml-0 leading-tight text-gray-500 bg-white border border-gray-300 rounded-l-lg hover:bg-gray-100 hover:text-gray-700 dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white">
+//         <span class="sr-only">Previous</span>
+//         <svg aria-hidden="true" class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M12.707 5.293a1 1 0 010 1.414L9.414 10l3.293 3.293a1 1 0 01-1.414 1.414l-4-4a1 1 0 010-1.414l4-4a1 1 0 011.414 0z" clip-rule="evenodd"></path></svg>
+//       </a>
+//     </li>`,
+// ...addNavArr,
+// `
+//     <li>
+//       <a href="#" class="block px-3 py-2 leading-tight text-gray-500 bg-white border border-gray-300 rounded-r-lg hover:bg-gray-100 hover:text-gray-700 dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white">
+//         <span class="sr-only">Next</span>
+//         <svg aria-hidden="true" class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z" clip-rule="evenodd"></path></svg>
+//       </a>
+//     </li>
+//   </ul>
+// </nav>
+// </div>
+//   `]
+
+//   document.getElementById("contestData").insertAdjacentHTML("afterend",htmlStr.join(' '))
+
+// }
